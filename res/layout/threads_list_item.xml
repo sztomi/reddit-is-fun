@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * reddit is fun
+ *
+ * by talklittle
+ */
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:paddingTop="2dip"
+    android:paddingBottom="2dip"
+    >
+
+<!-- Left section -->
+    <TextView android:id="@+id/votes"
+        android:layout_width="40dip"
+        android:layout_height="32dip"
+        android:layout_alignParentLeft="true"
+        
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+    />
+    
+    <!-- Thumbnail invisible by default -->
+    <ImageView android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/votes"
+
+		android:visibility="invisible"
+        android:gravity="center"
+        android:scaleType="centerInside"
+    />
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:layout_toRightOf="@id/thumbnail">
+
+		<!-- Top row -->
+		<RelativeLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:paddingLeft="14dip"
+		    android:paddingRight="5dip">
+
+		    <TextView android:id="@+id/title"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginBottom="1dip"
+		        android:text="A really cool title goes here yeah yeah reddit titles are always really long"
+		
+		        android:gravity="center_vertical|left"
+		        android:textAppearance="?android:attr/textAppearanceMedium"
+		    />
+		    
+		    <!-- Hidden (size 0) element for URL -->
+		    <TextView android:id="@+id/link"
+		        android:layout_width="0dip"
+		        android:layout_height="0dip"
+		        android:layout_above="@id/title"
+		        android:layout_marginBottom="1dip"
+		        android:text="hi"
+		
+				android:visibility="invisible"
+		        android:gravity="center_vertical|left"
+		        android:textAppearance="?android:attr/textAppearanceSmall"
+		        />
+		        
+	    </RelativeLayout>
+	    
+	    <!-- Bottom row -->
+	    <RelativeLayout
+	    	android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:paddingLeft="14dip"
+		    android:paddingRight="5dip">
+		    
+	        <TextView android:id="@+id/numComments"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@id/title"
+		        android:layout_marginRight="5dip"
+		        android:text="0 cmts"
+		
+		        android:singleLine="true"
+		        android:ellipsize="marquee"
+		        android:textAppearance="?android:attr/textAppearanceSmall"
+		        android:textStyle="bold"
+		    />
+		
+		    <TextView android:id="@+id/linkDomain"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="5dip"
+		        android:layout_toRightOf="@id/numComments"
+		        android:layout_alignBaseline="@id/numComments"
+		        android:text="(self.reddit.com)"
+		
+		        android:textAppearance="?android:attr/textAppearanceSmall"
+		    />
+
+			<!--  XXX invisible for now -->
+		    <TextView android:id="@+id/submissionTime"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_toRightOf="@id/linkDomain"
+		        android:layout_alignBaseline="@id/numComments"
+		        android:layout_toLeftOf="@id/submitter"
+		        android:text="XXX"
+		        
+		        android:visibility="invisible"
+		        android:singleLine="true"
+		        android:ellipsize="marquee"
+		        android:textAppearance="?android:attr/textAppearanceSmall"
+		    />
+		    
+		    <!-- XXX invisible for now -->
+		    <TextView android:id="@+id/submitter"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="5dip"
+		        android:layout_toRightOf="@id/submissionTime"
+		        android:layout_alignBaseline="@id/numComments"
+		        android:text="talklittle"
+		
+		        android:visibility="invisible"
+		        android:singleLine="true"
+		        android:ellipsize="marquee"
+		        android:textAppearance="?android:attr/textAppearanceSmall"
+		    />
+				    
+	    </RelativeLayout>
+	    
+    </LinearLayout>
+
+</RelativeLayout>
