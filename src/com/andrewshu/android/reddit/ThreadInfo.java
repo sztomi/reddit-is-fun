@@ -1,4 +1,4 @@
-package talklittle.android.reddit;
+package com.andrewshu.android.reddit;
 
 import java.util.HashMap;
 
@@ -44,15 +44,23 @@ public class ThreadInfo {
 	
 	public HashMap<String, String> mValues = new HashMap<String, String>();
 	
-	public ThreadInfo() {
-		// Nothing to do
-	}
-
 	// TODO?: Make setters for everything instead... or not.
 	public void put(String key, String value) {
 		mValues.put(key, value);
 	}
 
+	public String getThingFullname() {
+		return mValues.get(KIND) + "_" + mValues.get(ID);
+	}
+	
+	public String getKind() {
+		return mValues.get(KIND);
+	}
+	
+	public String getId() {
+		return mValues.get(ID);
+	}
+	
 	public String getLink() {
 		return mValues.get(URL);
 	}
