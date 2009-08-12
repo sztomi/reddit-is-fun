@@ -2,9 +2,6 @@ package com.andrewshu.android.reddit;
 
 import java.util.HashMap;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 /**
  * Class representing a thread posting in reddit API.
  * 
@@ -44,53 +41,73 @@ public class ThreadInfo {
 	
 	public HashMap<String, String> mValues = new HashMap<String, String>();
 	
-	// TODO?: Make setters for everything instead... or not.
 	public void put(String key, String value) {
 		mValues.put(key, value);
 	}
-
-	public String getThingFullname() {
-		return mValues.get(KIND) + "_" + mValues.get(ID);
+	
+	public void setLikes(String likes) {
+		mValues.put(LIKES, likes);
 	}
 	
-	public String getKind() {
-		return mValues.get(KIND);
+	public void setScore(String score) {
+		mValues.put(SCORE, score);
+	}
+
+	public String getAuthor() {
+		return mValues.get(AUTHOR);
+	}
+	
+	public String getClicked() {
+		return mValues.get(CLICKED);
+	}
+	
+	public String getCreated() {
+		return mValues.get(CREATED);
+	}
+
+	public String getDomain() {
+		return mValues.get(DOMAIN);
 	}
 	
 	public String getId() {
 		return mValues.get(ID);
 	}
 	
-	public String getLink() {
-		return mValues.get(URL);
+	public String getKind() {
+		return mValues.get(KIND);
 	}
 	
-	public String getLinkDomain() {
-		return mValues.get(DOMAIN);
+	public String getLikes() {
+		return mValues.get(LIKES);
+	}
+	
+	public String getName() {
+		return mValues.get(NAME);
 	}
 	
 	public String getNumComments() {
 		return mValues.get(NUM_COMMENTS);
 	}
 	
-	public String getNumVotes() {
+	public String getScore() {
 		return mValues.get(SCORE);
 	}
 	
-	public String getSubmissionTime() {
-		return mValues.get(CREATED);
-	}
-
-	public String getSubmitter() {
-		return mValues.get(AUTHOR);
+	public String getSelftext() {
+		return mValues.get(SELFTEXT);
 	}
 	
 	public String getTitle() {
 		return mValues.get(TITLE);
 	}
 	
-	public String getThumbnailURL() {
+	public String getThumbnail() {
 		return mValues.get(THUMBNAIL);
 	}
 
+	public String getURL() {
+		return mValues.get(URL);
+	}
+	
+	
 }

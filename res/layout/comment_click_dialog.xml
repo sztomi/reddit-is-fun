@@ -7,6 +7,7 @@
               android:padding="10dp"
               >
     
+    <!-- TODO: something like username you're replying to
    	<TextView android:id="@+id/url"
    		android:layout_width="wrap_content"
    		android:layout_height="wrap_content"
@@ -14,6 +15,7 @@
    		android:ellipsize="marquee"
    		android:textSize="9dip"
    		/>
+   		-->
 	
 	<LinearLayout
     	android:orientation="horizontal"
@@ -27,14 +29,14 @@
 	    	android:layout_height="wrap_content"
 	    	android:padding="10dp"
 	    	>
-		    <CheckBox android:id="@+id/thread_vote_up_button"
+		    <CheckBox android:id="@+id/comment_vote_up_button"
 		    	style="@style/VoteUpButton"
 		    	android:layout_width="100dip"
 				android:layout_height="50dip"
 				android:layout_marginBottom="10dip"
 				/>
 				
-			<CheckBox android:id="@+id/thread_vote_down_button"
+			<CheckBox android:id="@+id/comment_vote_down_button"
 				style="@style/VoteDownButton"
 		    	android:layout_width="100dip"
 				android:layout_height="50dip"
@@ -49,19 +51,12 @@
 	    	android:layout_height="wrap_content"
 	    	android:padding="10dp"
 	    	>
-	    	<Button android:id="@+id/thread_link_button"
+	    	<Button android:id="@+id/reply_button"
 	    		android:layout_width="wrap_content"
 	    		android:layout_height="wrap_content"
 	    		android:layout_marginBottom="10dip"
 	    		android:singleLine="true"
-	    		android:text="@string/thread_link_button"
-	    		/>
-	    	<Button android:id="@+id/thread_comments_button"
-	    		android:layout_width="wrap_content"
-	    		android:layout_height="wrap_content"
-	    		android:layout_marginBottom="10dip"
-	    		android:singleLine="true"
-	    		android:text="@string/thread_comments_button"
+	    		android:text="@string/comment_reply_button"
 	    		/>
 	   	</LinearLayout>
    	</LinearLayout>

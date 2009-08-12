@@ -16,7 +16,14 @@
 	<string name="login_username_label">Username:</string>
 	<string name="login_password_label">Password:</string>
 	<string name="login_button">Login</string>
+	<string name="login_remember_checkbox">Remember me?</string>
 	
 	<string name="vote_up_button">Upvote</string>
 	<string name="vote_down_button">Downvote</string>
+	
+	<string name="thread_link_button">link</string>
+	<string name="thread_comments_button">comments</string>
+	
+	<string name="comment_reply_button">reply</string>
+	
 </resources>

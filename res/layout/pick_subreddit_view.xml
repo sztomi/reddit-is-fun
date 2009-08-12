@@ -11,6 +11,11 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
+        
+    <EditText android:id="@+id/pick_subreddit_input"
+    	android:layout_width="fill_parent"
+    	android:layout_height="?android:attr/listPreferredItemHeight"
+    	/>
 
     <ListView android:id="@android:id/list"
     	android:layout_width="fill_parent"
