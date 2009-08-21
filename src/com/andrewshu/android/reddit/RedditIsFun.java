@@ -73,7 +73,7 @@ public final class RedditIsFun extends ListActivity
     /** Handler used to post things to UI thread */
     Handler mHandler = new Handler();
 
-	DefaultHttpClient mClient = new DefaultHttpClient();
+    private final DefaultHttpClient mClient = Common.createGzipHttpClient();
 	String mModhash = null;
 	
    

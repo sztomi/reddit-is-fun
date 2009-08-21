@@ -86,7 +86,7 @@ public final class RedditCommentsListActivity extends ListActivity
     /** Handler used to post things to UI thread */
     Handler mHandler = new Handler();
     
-    private DefaultHttpClient mClient = new DefaultHttpClient();
+    private final DefaultHttpClient mClient = Common.createGzipHttpClient();
     volatile private String mModhash;
    
     
