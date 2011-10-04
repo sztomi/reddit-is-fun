@@ -143,11 +143,16 @@ public class Constants {
     // Strings
     public static final String NO_STRING = "no";
     
-    public static final String FRONTPAGE_STRING = "reddit front page";
+    public static final String FRONTPAGE_STRING = "reddit front page"; // ne fordítsd
     
-    public static final String HAVE_MAIL_TICKER = "reddit mail";
-    public static final String HAVE_MAIL_TITLE = "reddit is fun";
-    public static final String HAVE_MAIL_TEXT = "You have reddit mail.";
+    public static final String HAVE_MAIL_TICKER = "szimpatikus.hu üzenet";
+    public static final String HAVE_MAIL_TITLE = "szimpatikus.hu olvasó";
+    public static final String HAVE_MAIL_TEXT = "Üzeneted jött a szimpatikus.hu-n";
+    
+    public static final String S_UNREAD_MSG_SINGULAR = " olvasatlan üzenet";
+    public static final String S_UNREAD_MSG_PLURAL = " olvasatlan üzenet";
+    public static final String S_TAGLINE = "szimpatikus.hu: elég a negatív hírekből";
+    public static final String S_COMMENTBY = "írta ";
     
     // save instance state Bundle keys
     public static final String AFTER_KEY = "after";

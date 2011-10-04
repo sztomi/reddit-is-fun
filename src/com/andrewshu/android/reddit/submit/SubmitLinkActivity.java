@@ -174,8 +174,8 @@ public class SubmitLinkActivity extends TabActivity {
 	        	final EditText submitLinkReddit = (EditText) findViewById(R.id.submit_link_reddit);
 	        	final EditText submitTextReddit = (EditText) findViewById(R.id.submit_text_reddit);
 	        	submitLinkUrl.setText(url);
-	        	submitLinkReddit.setText("reddit.com");
-        		submitTextReddit.setText("reddit.com");
+	        	submitLinkReddit.setText("szimpatikus.hu");
+        		submitTextReddit.setText("szimpatikus.hu");
         		mSubmitUrl = Constants.REDDIT_BASE_URL + "/submit";
 	        }
         } else {

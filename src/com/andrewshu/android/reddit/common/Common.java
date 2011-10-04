@@ -396,7 +396,7 @@ public class Common {
 			notification.contentView = contentView;
 		} else {
 			notification.setLatestEventInfo(context, Constants.HAVE_MAIL_TITLE,
-					count + (count == 1 ? " unread message" : " unread messages"), contentIntent);
+					count + (count == 1 ? Constants.S_UNREAD_MSG_SINGULAR : Constants.S_UNREAD_MSG_PLURAL), contentIntent);
 		}
 		notification.defaults |= Notification.DEFAULT_SOUND;
 		notification.flags |= Notification.FLAG_ONLY_ALERT_ONCE | Notification.FLAG_AUTO_CANCEL;

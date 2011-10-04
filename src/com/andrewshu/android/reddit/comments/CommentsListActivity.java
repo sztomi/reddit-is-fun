@@ -1834,7 +1834,7 @@ public class CommentsListActivity extends ListActivity
 	    			linkButton.setEnabled(true);
     			}
     		} else {
-    			titleView.setText("Comment by " + mVoteTargetThing.getAuthor());
+    			titleView.setText(Constants.S_COMMENTBY + mVoteTargetThing.getAuthor());
     			likes = mVoteTargetThing.getLikes();
     			urlView.setVisibility(View.INVISIBLE);
     			submissionStuffView.setVisibility(View.INVISIBLE);

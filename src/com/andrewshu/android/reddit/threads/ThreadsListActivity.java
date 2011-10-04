@@ -191,7 +191,7 @@ public final class ThreadsListActivity extends ListActivity {
 		    	// Orientation change. Use prior instance.
 		    	resetUI(new ThreadsListAdapter(this, mThreadsList));
 		    	if (Constants.FRONTPAGE_STRING.equals(mSubreddit))
-		    		setTitle("reddit.com: what's new online!");
+		    		setTitle(Constants.S_TAGLINE);
 		    	else
 		    		setTitle("/r/" + mSubreddit.trim());
 		    }
@@ -724,7 +724,7 @@ public final class ThreadsListActivity extends ListActivity {
     		}
     		
 	    	if (Constants.FRONTPAGE_STRING.equals(mSubreddit))
-	    		setTitle("reddit.com: what's new online!");
+	    		setTitle(Constants.S_TAGLINE);
 	    	else
 	    		setTitle("/r/" + mSubreddit.trim());
     	}
