@@ -54,8 +54,8 @@ public class Constants {
 	
 	public static final String COMMENT_KIND = "t1";
 	public static final String THREAD_KIND = "t5";
-	public static final String MESSAGE_KIND = "t4";
-	public static final String SUBREDDIT_KIND = "t5";
+	public static final String MESSAGE_KIND = "t6";
+	public static final String SUBREDDIT_KIND = "t4";
 	public static final String MORE_KIND = "more";
     
 	public static final int DEFAULT_THREAD_DOWNLOAD_LIMIT = 25;
