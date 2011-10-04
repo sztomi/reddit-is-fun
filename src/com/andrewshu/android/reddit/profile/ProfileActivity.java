@@ -744,7 +744,6 @@ public final class ProfileActivity extends ListActivity
 	   						ti.setSpannedBody("");
 	   					_mThingInfos.add(ti);
     				} else if (Constants.THREAD_KIND.equals(tiContainer.getKind())) {
-    					ThingInfo ti = tiContainer.getData();
     					_mThingInfos.add(tiContainer.getData());
     				}
     			}
