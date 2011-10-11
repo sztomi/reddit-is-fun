@@ -1,11 +1,11 @@
-package com.andrewshu.android.reddit.test;
+package com.andrewshu.android.reddit.derived.hu.szimpatikus.test;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-import com.andrewshu.android.reddit.Constants;
-import com.andrewshu.android.reddit.Util;
-import com.andrewshu.android.reddit.R;
+import com.andrewshu.android.reddit.derived.hu.szimpatikus.Constants;
+import com.andrewshu.android.reddit.derived.hu.szimpatikus.Util;
+import com.andrewshu.android.reddit.derived.hu.szimpatikus.R;
 
 import junit.framework.TestCase;
 

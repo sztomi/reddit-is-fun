@@ -97,7 +97,7 @@
   					android:background="@drawable/divider_vertical_dark"
   				/>
   				
-			    <com.andrewshu.android.reddit.threads.DontPressWithParentImageView
+			    <com.andrewshu.android.reddit.derived.hu.szimpatikus.threads.DontPressWithParentImageView
 			    	android:id="@+id/thumbnail"
 			        android:layout_width="?android:attr/listPreferredItemHeight"
 			        android:layout_height="?android:attr/listPreferredItemHeight"

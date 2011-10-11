@@ -54,7 +54,7 @@
 	<string name="thread_comments_button">kommentek</string>
 	<string name="thread_time_submitter">%1$s, írta %2$s</string>
 	
-	<string name="comment_links_button">links</string>
+	<string name="comment_links_button">linkek</string>
 	<string name="comment_reply_button">válasz</string>
 	<string name="reply_save_button">mentés</string>
 	<string name="reply_cancel_button">mégse</string>
@@ -73,7 +73,7 @@
 	<string name="previous_threads">előző</string>
 	
 	<string name="error_voting_toast">Nem sikerült elküldeni a szavazatot. Próbáld újra néhány perc múlva.</string>
-	<string name="mail_notification_unscheduled">Szimpatikus.hu üzenetértesítő kikapcsolva.</string>
+	<string name="mail_notification_unscheduled">A szimpatikus.hu üzenetértesítő kikapcsolva.</string>
 	<string name="mail_notification_scheduled_5min">A szimpatikus.hu üzenetértesítő 5 percenként frissül.</string>
 	<string name="mail_notification_scheduled_30min">A szimpatikus.hu üzenetértesítő 30 percenként frissül.</string>
 	<string name="mail_notification_scheduled_1hour">A szimpatikus.hu üzenetértesítő 1 óránként frissül.</string>
@@ -96,7 +96,7 @@
 	<!--  === Menus === -->
 	
 	<string name="compose_message">Üzenet írása</string>
-	<string name="dark_theme">Átállok a sötét oldalra.</string>
+	<string name="dark_theme">Átállok a sötét oldalra</string>
 	<string name="subscribe">+ Kezdőoldalra</string>
 	<string name="unsubscribe">- Töröld a kezdőoldalról</string>
 	<string name="inbox">Postaláda</string>
@@ -192,8 +192,8 @@
         <item>ROTATION_LANDSCAPE</item>
     </string-array>
 	
-	<string name="pref_mail_notification_style">Üzenetértesítő típuse</string>
-	<string name="pref_mail_notification_style_dialogtitle">Üzenetértesítő típuse</string>
+	<string name="pref_mail_notification_style">Üzenetértesítő típusa</string>
+	<string name="pref_mail_notification_style_dialogtitle">Üzenetértesítő típusa</string>
 	<string-array name="pref_mail_notification_style_choices">
 		<item>Alap</item>
 		<item>Nagy boríték</item>
