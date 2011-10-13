@@ -37,7 +37,7 @@ import com.andrewshu.android.reddit.derived.hu.szimpatikus.things.ThingInfo;
 
 public class Util {
 	
-	private static final String TAG = "Util";
+	private static final String TAG = "Util"; //$NON-NLS-1$
 	
 	public static ArrayList<String> extractUris(URLSpan[] spans) {
         int size = spans.length;
@@ -57,31 +57,31 @@ public class Util {
 	 */
 	public static String convertHtmlTags(String html) {
 		// Handle <code>
-		html = html.replaceAll("<code>", "<tt>").replaceAll("</code>", "</tt>");
+		html = html.replaceAll("<code>", "<tt>").replaceAll("</code>", "</tt>"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 		
 		// Handle <pre>
-		int preIndex = html.indexOf("<pre>");
+		int preIndex = html.indexOf("<pre>"); //$NON-NLS-1$
 		int preEndIndex = -6;  // -"</pre>".length()
 		StringBuilder bodyConverted = new StringBuilder();
 		while (preIndex != -1) {
 			// get the text between previous </pre> and next <pre>.
 			bodyConverted = bodyConverted.append(html.substring(preEndIndex + 6, preIndex));
-			preEndIndex = html.indexOf("</pre>", preIndex);
+			preEndIndex = html.indexOf("</pre>", preIndex); //$NON-NLS-1$
 			// Replace newlines with <br> inside the <pre></pre>
 			// Retain <pre> tags since android.text.Html.fromHtml() will ignore them anyway.
-			bodyConverted = bodyConverted.append(html.substring(preIndex, preEndIndex).replaceAll("\n", "<br>"))
-				.append("</pre>");
-			preIndex = html.indexOf("<pre>", preEndIndex);
+			bodyConverted = bodyConverted.append(html.substring(preIndex, preEndIndex).replaceAll("\n", "<br>")) //$NON-NLS-1$ //$NON-NLS-2$
+				.append("</pre>"); //$NON-NLS-1$
+			preIndex = html.indexOf("<pre>", preEndIndex); //$NON-NLS-1$
 		}
 		html = bodyConverted.append(html.substring(preEndIndex + 6)).toString();
 		
 		// Handle <li>
-		html = html.replaceAll("<li>", "* ").replaceAll("</li>", "<br>");
+		html = html.replaceAll("<li>", "* ").replaceAll("</li>", "<br>"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 		
 		// Handle <strong> and <em>, which are normally <b> and <i> respectively, but reversed in Android.
 		// ANDROID BUG: http://code.google.com/p/android/issues/detail?id=3473
-		html = html.replaceAll("<strong>", "<b>").replaceAll("</strong>", "</b>")
-		           .replaceAll("<em>", "<i>").replaceAll("</em>", "</i>");
+		html = html.replaceAll("<strong>", "<b>").replaceAll("</strong>", "</b>") //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+		           .replaceAll("<em>", "<i>").replaceAll("</em>", "</i>"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 		
 		return html;
 	}
@@ -95,48 +95,48 @@ public class Util {
 		long systime = System.currentTimeMillis() / 1000;
 		long diff = systime - utcTimeSeconds;
 		if (diff <= 0)
-			return "very recently";
+			return Messages.getString("Util.justNow"); //$NON-NLS-1$
 		else if (diff < 60) {
 			if (diff == 1)
-				return "1 second ago";
+				return Messages.getString("Util.aSecondAgo"); //$NON-NLS-1$
 			else
-				return diff + " seconds ago";
+				return diff + Messages.getString("Util.secondsAgo"); //$NON-NLS-1$
 		}
 		else if (diff < 3600) {
 			if ((diff / 60) == 1)
-				return "1 minute ago";
+				return Messages.getString("Util.aMinuteAgo"); //$NON-NLS-1$
 			else
-				return (diff / 60) + " minutes ago";
+				return (diff / 60) + Messages.getString("Util.minutesAgo"); //$NON-NLS-1$
 		}
 		else if (diff < 86400) { // 86400 seconds in a day
 			if ((diff / 3600) == 1)
-				return "1 hour ago";
+				return Messages.getString("Util.anHourAgo"); //$NON-NLS-1$
 			else
-				return (diff / 3600) + " hours ago";
+				return (diff / 3600) + Messages.getString("Util.hoursAgo"); //$NON-NLS-1$
 		}
 		else if (diff < 604800) { // 86400 * 7
 			if ((diff / 86400) == 1)
-				return "1 day ago";
+				return Messages.getString("Util.aDayAgo"); //$NON-NLS-1$
 			else
-				return (diff / 86400) + " days ago";
+				return (diff / 86400) + Messages.getString("Util.daysAgo"); //$NON-NLS-1$
 		}
 		else if (diff < 2592000) { // 86400 * 30
 			if ((diff / 604800) == 1)
-				return "1 week ago";
+				return Messages.getString("Util.aWeekAgo"); //$NON-NLS-1$
 			else
-				return (diff / 604800) + " weeks ago";
+				return (diff / 604800) + Messages.getString("Util.weeksAgo"); //$NON-NLS-1$
 		}
 		else if (diff < 31536000) { // 86400 * 365
 			if ((diff / 2592000) == 1)
-				return "1 month ago";
+				return Messages.getString("Util.aMonthAgo"); //$NON-NLS-1$
 			else
-				return (diff / 2592000) + " months ago";
+				return (diff / 2592000) + Messages.getString("Util.monthsAgo"); //$NON-NLS-1$
 		}
 		else {
 			if ((diff / 31536000) == 1)
-				return "1 year ago";
+				return Messages.getString("Util.aYearAgo"); //$NON-NLS-1$
 			else
-				return (diff / 31536000) + " years ago";
+				return (diff / 31536000) + Messages.getString("Util.yearsAgo"); //$NON-NLS-1$
 		}
 	}
 	
@@ -146,22 +146,22 @@ public class Util {
 	
 	public static String showNumComments(int comments) {
 		if (comments == 1) {
-			return "1 comment";
+			return Messages.getString("Util.oneComment"); //$NON-NLS-1$
 		} else {
-			return comments + " comments";
+			return comments + Messages.getString("Util.comments"); //$NON-NLS-1$
 		}
 	}
 	
 	public static String showNumPoints(int score) {
 		if (score == 1) {
-			return "1 point";
+			return Messages.getString("Util.onePoint"); //$NON-NLS-1$
 		} else {
-			return score + " points";
+			return score + Messages.getString("Util.points"); //$NON-NLS-1$
 		}
 	}
 	
 	public static String absolutePathToURL(String path) {
-		if (path.startsWith("/"))
+		if (path.startsWith("/")) //$NON-NLS-1$
 			return Constants.REDDIT_BASE_URL + path;
 		return path;
 	}
@@ -182,16 +182,15 @@ public class Util {
     	String error = null;
 		
 		if (StringUtils.isEmpty(line)) {
-			error = "Connection error when subscribing. Try again.";
-    		throw new HttpException("No content returned from subscribe POST");
+			error = Messages.getString("Util.connectError"); //$NON-NLS-1$
+    		throw new HttpException("No content returned from subscribe POST"); //$NON-NLS-1$
     	}
-    	if (line.contains("WRONG_PASSWORD")) {
-    		error = "Wrong password.";
-    		throw new Exception("Wrong password.");
+    	if (line.contains("WRONG_PASSWORD")) { //$NON-NLS-1$
+    		error = Messages.getString("Util.wrongPassword"); //$NON-NLS-1$
+    		throw new Exception("Wrong password."); //$NON-NLS-1$
     	}
-    	if (line.contains("USER_REQUIRED")) {
-    		// The modhash probably expired
-    		throw new Exception("User required. Huh?");
+    	if (line.contains("USER_REQUIRED")) { //$NON-NLS-1$
+    		throw new Exception("User required. Huh? The modhash probably expired."); //$NON-NLS-1$
     	}
     	
     	Common.logDLong(TAG, line);
@@ -369,7 +368,7 @@ public class Util {
 			try {
 				activity_overridePendingTransition.invoke(act, enterAnim, exitAnim);
 			} catch (Exception ex) {
-				if (Constants.LOGGING) Log.e(TAG, "overridePendingTransition", ex);
+				if (Constants.LOGGING) Log.e(TAG, "overridePendingTransition", ex); //$NON-NLS-1$
 			}
 		}
 	}
@@ -379,11 +378,11 @@ public class Util {
 	// ===============
 	
 	static Uri createCommentUri(String linkId, String commentId, int commentContext) {
-		return Uri.parse(new StringBuilder(Constants.REDDIT_BASE_URL + "/comments/")
+		return Uri.parse(new StringBuilder(Constants.REDDIT_BASE_URL + "/comments/") //$NON-NLS-1$
 			.append(linkId)
-			.append("/z/")
+			.append("/z/") //$NON-NLS-1$
 			.append(commentId)
-			.append("?context=")
+			.append("?context=") //$NON-NLS-1$
 			.append(commentContext)
 			.toString());
 	}
@@ -397,18 +396,18 @@ public class Util {
 	}
 	
 	public static Uri createProfileUri(String username) {
-		return Uri.parse(new StringBuilder(Constants.REDDIT_BASE_URL + "/user/")
+		return Uri.parse(new StringBuilder(Constants.REDDIT_BASE_URL + "/user/") //$NON-NLS-1$
 			.append(username)
 			.toString());
 	}
 	
 	public static Uri createSubmitUri(String subreddit) {
 		if (Constants.FRONTPAGE_STRING.equals(subreddit))
-			return Uri.parse(Constants.REDDIT_BASE_URL + "/submit");
+			return Uri.parse(Constants.REDDIT_BASE_URL + "/submit"); //$NON-NLS-1$
 		
-		return Uri.parse(new StringBuilder(Constants.REDDIT_BASE_URL + "/r/")
+		return Uri.parse(new StringBuilder(Constants.REDDIT_BASE_URL + "/r/") //$NON-NLS-1$
 			.append(subreddit)
-			.append("/submit")
+			.append("/submit") //$NON-NLS-1$
 			.toString());
 	}
 	
@@ -418,9 +417,9 @@ public class Util {
 	
 	public static Uri createSubredditUri(String subreddit) {
 		if (Constants.FRONTPAGE_STRING.equals(subreddit))
-			return Uri.parse(Constants.REDDIT_BASE_URL + "/");
+			return Uri.parse(Constants.REDDIT_BASE_URL + "/"); //$NON-NLS-1$
 		
-		return Uri.parse(new StringBuilder(Constants.REDDIT_BASE_URL + "/r/")
+		return Uri.parse(new StringBuilder(Constants.REDDIT_BASE_URL + "/r/") //$NON-NLS-1$
 			.append(subreddit)
 			.toString());
 	}
@@ -430,9 +429,9 @@ public class Util {
 	}
 	
 	static Uri createThreadUri(String subreddit, String threadId) {
-		return Uri.parse(new StringBuilder(Constants.REDDIT_BASE_URL + "/r/")
+		return Uri.parse(new StringBuilder(Constants.REDDIT_BASE_URL + "/r/") //$NON-NLS-1$
 			.append(subreddit)
-			.append("/comments/")
+			.append("/comments/") //$NON-NLS-1$
 			.append(threadId)
 			.toString());
 	}
@@ -444,13 +443,13 @@ public class Util {
 	public static boolean isRedditUri(Uri uri) {
 		if (uri == null) return false;
 		String host = uri.getHost();
-		return host != null && (host.equals("reddit.com") || host.endsWith(".reddit.com"));
+		return host != null && (host.equals("reddit.com") || host.endsWith(".reddit.com")); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 	
 	public static boolean isRedditShortenedUri(Uri uri) {
 		if (uri == null) return false;
 		String host = uri.getHost();
-		return host != null && host.equals("redd.it");
+		return host != null && host.equals("redd.it"); //$NON-NLS-1$
 	}
 	
     /**
@@ -471,7 +470,7 @@ public class Util {
     static boolean isWikipediaUri(Uri uri) {
     	if (uri == null) return false;
     	String host = uri.getHost();
-    	return host != null && host.endsWith(".wikipedia.org") && !host.contains(".m.wikipedia.org");
+    	return host != null && host.endsWith(".wikipedia.org") && !host.contains(".m.wikipedia.org"); //$NON-NLS-1$ //$NON-NLS-2$
     }
     
     /**
@@ -479,13 +478,13 @@ public class Util {
      */
     static Uri createMobileWikpediaUri(Uri uri) {
     	String uriString = uri.toString();
-    	return Uri.parse(uriString.replace(".wikipedia.org/", ".m.wikipedia.org/"));
+    	return Uri.parse(uriString.replace(".wikipedia.org/", ".m.wikipedia.org/")); //$NON-NLS-1$ //$NON-NLS-2$
     }
     
     public static boolean isYoutubeUri(Uri uri) {
     	if (uri == null) return false;
     	String host = uri.getHost();
-    	return host != null && host.endsWith(".youtube.com");
+    	return host != null && host.endsWith(".youtube.com"); //$NON-NLS-1$
     }
     
 }

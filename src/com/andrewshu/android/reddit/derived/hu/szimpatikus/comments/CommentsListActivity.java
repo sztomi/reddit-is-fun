@@ -1772,7 +1772,7 @@ public class CommentsListActivity extends ListActivity
 					findCommentText(search_text, true, false);
 				}
     		})
-    		.setNegativeButton("Cancel", null);
+    		.setNegativeButton("Mégse", null);
     		dialog = builder.create();
     		break;
     	default:

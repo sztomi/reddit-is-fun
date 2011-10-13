@@ -36,7 +36,8 @@
 			
 		<CheckBoxPreference
 			android:key="confirm_quit"
-			android:title="@string/pref_confirm_quit" />
+			android:title="@string/pref_confirm_quit" 
+			android:defaultValue="false" />
 			
 	</PreferenceCategory>
 	

@@ -52,7 +52,7 @@ public class RedditSettings {
 	private String homepage = Constants.FRONTPAGE_STRING;
 	private boolean useExternalBrowser = false;
 	private boolean showCommentGuideLines = true;
-	private boolean confirmQuit = true;
+	private boolean confirmQuit = false;
 	private boolean alwaysShowNextPrevious = true;
 	
 	private int threadDownloadLimit = Constants.DEFAULT_THREAD_DOWNLOAD_LIMIT;
@@ -201,7 +201,7 @@ public class RedditSettings {
         this.setUseExternalBrowser(sessionPrefs.getBoolean(Constants.PREF_USE_EXTERNAL_BROWSER, false));
         
     	// Show confirmation dialog when backing out of root Activity
-        this.setConfirmQuit(sessionPrefs.getBoolean(Constants.PREF_CONFIRM_QUIT, true));
+        this.setConfirmQuit(sessionPrefs.getBoolean(Constants.PREF_CONFIRM_QUIT, false));
         
     	// Whether to always show the next/previous buttons, or only at bottom of list
         this.setAlwaysShowNextPrevious(sessionPrefs.getBoolean(Constants.PREF_ALWAYS_SHOW_NEXT_PREVIOUS, true));

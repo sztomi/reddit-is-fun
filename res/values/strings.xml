@@ -44,7 +44,7 @@
     
 	<string name="login_username_label">Felhasználónév:</string>
 	<string name="login_password_label">Jelszó:</string>
-	<string name="login_button">Bejelentkezés</string>
+	<string name="login_button">Belépés</string>
 	<string name="login_remember_checkbox">Emlékezzen rám</string>
 	
 	<string name="vote_up_button">Tetszik</string>
@@ -101,7 +101,7 @@
 	<string name="unsubscribe">- Töröld a kezdőoldalról</string>
 	<string name="inbox">Postaláda</string>
 	<string name="light_theme">Inkább Jedi leszek</string>
-	<string name="login">Bejelentkezés</string>
+	<string name="login">Belépés</string>
 	<string name="logout">Kijelentkezés: %s</string>
 	<string name="menu_preferences">Beállítások</string>
 
@@ -140,10 +140,10 @@
 	<string name="pref_appearance_category">Kinézet</string>
 	<string name="pref_mail_category">Szimpatikus.hu üzenetek</string>
 	
-	<string name="pref_homepage">Alapértelmezett témakör indításkor</string>
+	<string name="pref_homepage">Alapértelmezett témakör</string>
 	<string name="pref_homepage_hint">Hagyd üresen az alapértelmezett beállításhoz</string>
 	
-	<string name="pref_use_external_browser">Mindig külső böngészőt használjon</string>
+	<string name="pref_use_external_browser">Külső böngészőt használjon</string>
 	
 	<string name="pref_confirm_quit">Kilépés megerősítése</string>
  	
@@ -177,7 +177,7 @@
     </string-array>
     
     <string name="pref_show_comment_guide_lines">Komment vonalak</string>
-    <string name="pref_always_show_next_previous">Mindig látszódjon a navigációs sáv</string>
+    <string name="pref_always_show_next_previous">Mindig látszódjon a navigáció</string>
 
 	<string name="pref_rotation">Képernyőforgatás</string>
 	<string name="pref_rotation_dialogtitle">Képernyőforgatás</string>
@@ -205,8 +205,8 @@
         <item>MAIL_NOTIFICATION_STYLE_OFF</item>
     </string-array>
     
-    <string name="pref_mail_notification_service">Akkor is nézze az üzeneteket, ha nem fut</string>
-    <string name="pref_mail_notification_service_dialogtitle">Akkor is nézze az üzeneteket, ha nem fut</string>
+    <string name="pref_mail_notification_service">Folyamatosan nézze az üzeneteket</string>
+    <string name="pref_mail_notification_service_dialogtitle">Folyamatosan nézze az üzeneteket (akkor is, ha nem fut)</string>
     <string-array name="pref_mail_notification_service_choices">
     	<item>Kikapcsolva</item>
     	<item>5 percenként</item>
