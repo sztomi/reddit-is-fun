@@ -192,8 +192,13 @@ public class RedditSettings {
         
         // Default subreddit
         String homepage = sessionPrefs.getString(Constants.PREF_HOMEPAGE, Constants.FRONTPAGE_STRING).trim();
+        
         if (StringUtils.isEmpty(homepage))
         	this.setHomepage(Constants.FRONTPAGE_STRING);
+        else if (homepage.equals(Constants.OLD_FRONTPAGE_STRING)) {
+        	homepage = Constants.FRONTPAGE_STRING;
+        	this.setHomepage(homepage);
+        }
         else
         	this.setHomepage(homepage);
         

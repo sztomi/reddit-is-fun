@@ -143,7 +143,8 @@ public class Constants {
     // Strings
     public static final String NO_STRING = "no";
     
-    public static final String FRONTPAGE_STRING = "reddit front page"; // ne fordítsd
+    public static final String FRONTPAGE_STRING = "Kezdőoldal";
+    public static final String OLD_FRONTPAGE_STRING = "reddit front page";
     
     public static final String HAVE_MAIL_TICKER = "szimpatikus.hu üzenet";
     public static final String HAVE_MAIL_TITLE = "szimpatikus.hu olvasó";
