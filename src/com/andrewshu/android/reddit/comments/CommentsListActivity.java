@@ -363,6 +363,7 @@ public class CommentsListActivity extends ListActivity
             	return HIDDEN_ITEM_HEAD_VIEW_TYPE;
             if (item.isLoadMoreCommentsPlaceholder())
             	return MORE_ITEM_VIEW_TYPE;
+            // ^ code smell
             
             return COMMENT_ITEM_VIEW_TYPE;
         }
@@ -2010,6 +2011,7 @@ public class CommentsListActivity extends ListActivity
         	// so the ListView might try to display the View before "ups" in JSON has been parsed.
         	if (Constants.LOGGING) Log.e(TAG, "getView, normal comment", e);
         }
+        
         if (item.getSSAuthor() != null)
         	submitterView.setText(item.getSSAuthor());
         else

@@ -365,7 +365,7 @@ public class DownloadCommentsTask extends AsyncTask<Integer, Long, Boolean>
 		ThingInfo ci = commentThingListing.getData();
 		ci.setIndent(mIndentation + indentLevel);
 		
-		if (isShouldDoSlowProcessing())
+		if (shouldDoSlowProcessing())
     		processCommentSlowSteps(ci);
 		else
 			deferCommentProcessing(ci, insertedCommentIndex);
@@ -376,10 +376,10 @@ public class DownloadCommentsTask extends AsyncTask<Integer, Long, Boolean>
 		else
 			deferCommentInsertion(ci);
 		
-		if (isHasJumpTarget()) {
+		if (hasJumpTarget()) {
 			if (mJumpToCommentId.equals(ci.getId()))
 				processJumpTarget(ci, insertedCommentIndex);
-			else if (!isFoundJumpTargetComment())
+			else if (!foundJumpTargetComment())
 				addJumpTargetContext(ci);
 		}
 
@@ -415,16 +415,16 @@ public class DownloadCommentsTask extends AsyncTask<Integer, Long, Boolean>
 		return insertedCommentIndex;
 	}
 	
-	private boolean isHasJumpTarget() {
+	private boolean hasJumpTarget() {
 		return ! StringUtils.isEmpty(mJumpToCommentId);
 	}
 	
-	private boolean isFoundJumpTargetComment() {
+	private boolean foundJumpTargetComment() {
 		return mJumpToCommentFoundIndex != -1;
 	}
 	
-	private boolean isShouldDoSlowProcessing() {
-		return !isHasJumpTarget() || isFoundJumpTargetComment();
+	private boolean shouldDoSlowProcessing() {
+		return !hasJumpTarget() || foundJumpTargetComment();
 	}
 	
 	private void processJumpTarget(ThingInfo comment, int commentIndex) {
