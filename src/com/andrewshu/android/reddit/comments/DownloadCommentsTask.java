@@ -4,8 +4,14 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Deque;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Queue;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -16,6 +22,7 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import android.os.AsyncTask;
+import android.os.Debug;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
@@ -230,6 +237,18 @@ public class DownloadCommentsTask extends AsyncTask<Integer, Long, Boolean>
 		});
 	}
 	
+	private void appendCommentTree(final Collection<? extends ThingInfo> tree) {
+		mActivity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+	    		synchronized (CommentsListActivity.COMMENT_ADAPTER_LOCK) {
+	    			mActivity.mCommentsList.addAll(tree);
+	    		}
+    			mActivity.mCommentsAdapter.notifyDataSetChanged();
+			}
+		});
+	}
+	
 	private void replaceCommentsAtPosition(final Collection<ThingInfo> comments, final int position) {
 		mActivity.runOnUiThread(new Runnable() {
 			@Override
@@ -357,61 +376,81 @@ public class DownloadCommentsTask extends AsyncTask<Integer, Long, Boolean>
 		mThreadId = mOpThingInfo.getId();
 	}
 	
+	// Do a depth-first-search to construct a list of comments
+	Deque<ThingInfo> commentTreeDFSList(ThingListing comments) {
+		Deque<ThingInfo> result = new LinkedList<ThingInfo>();
+		Deque<ThingListing> toVisit = new LinkedList<ThingListing>();
+		toVisit.addFirst(comments);
+		 
+		while (!toVisit.isEmpty()) {
+			ThingListing currentNode = toVisit.getFirst();
+			
+			if (currentNode.getData() == null)
+				continue;
+			
+			result.addLast(currentNode.getData());
+			
+			Listing repliesListing = currentNode.getData().getReplies();
+			if (repliesListing == null)
+				continue;
+			
+			ListingData repliesListingData = repliesListing.getData();
+			if (repliesListingData == null)
+				continue;
+			
+			ThingListing[] replyThingListings = repliesListingData.getChildren();
+			if (replyThingListings == null)
+				continue;
+						
+			for (int i = replyThingListings.length - 1; i >= 0; --i) {
+				ThingListing item = replyThingListings[i];
+				// Skip things that are not comments, which shouldn't happen
+				if (!Constants.COMMENT_KIND.equals(item.getKind())) {
+					if (Constants.LOGGING)
+						Log.e(TAG, "comment whose kind is \"" 		+
+									item.getKind() +
+									"\" (expected "					+
+									Constants.COMMENT_KIND+")");
+					continue;
+				}	
+				
+				ThingInfo comment = item.getData();				
+				
+				if (comment != null) {
+					if (Constants.MORE_KIND.equals(item.getKind())) comment.setLoadMoreCommentsPlaceholder(true);
+				}
+					
+				result.add(comment);				
+				toVisit.addFirst(item);
+			}			
+		}
+		
+		return result;
+	}
+	
 	/**
 	 * Recursive method to insert comment tree into the mCommentsList,
 	 * with proper list order and indentation
 	 */
 	int insertNestedComment(ThingListing commentThingListing, int indentLevel, int insertedCommentIndex) {
-		ThingInfo ci = commentThingListing.getData();
-		ci.setIndent(mIndentation + indentLevel);
-		
-		if (shouldDoSlowProcessing())
-    		processCommentSlowSteps(ci);
-		else
-			deferCommentProcessing(ci, insertedCommentIndex);
+		Deque<ThingInfo> commentsList = commentTreeDFSList(commentThingListing);
+		Iterator<ThingInfo> iter = commentsList.iterator();
+		while (iter.hasNext()) {
+			ThingInfo ci = iter.next();
+			ci.setIndent(mIndentation + indentLevel);
 
-		// Insert the comment
-		if (isInsertingEntireThread())
-			appendComment(ci);
-		else
-			deferCommentInsertion(ci);
-		
-		if (hasJumpTarget()) {
-			if (mJumpToCommentId.equals(ci.getId()))
-				processJumpTarget(ci, insertedCommentIndex);
-			else if (!foundJumpTargetComment())
-				addJumpTargetContext(ci);
+	    	processCommentSlowSteps(ci);
+	    	
+//	    	if (hasJumpTarget()) {
+//				if (mJumpToCommentId.equals(ci.getId()))
+//					processJumpTarget(ci, insertedCommentIndex);
+//				else if (!foundJumpTargetComment())
+//					addJumpTargetContext(ci);
+//			}	    	
 		}
+		
+		appendCommentTree(commentsList);		
 
-		// handle "more" entry
-		if (Constants.MORE_KIND.equals(commentThingListing.getKind())) {
-			ci.setLoadMoreCommentsPlaceholder(true);
-			if (Constants.LOGGING) Log.v(TAG, "new more position at " + (insertedCommentIndex));
-	    	return insertedCommentIndex;
-		}
-		
-		// Regular comment
-		
-		// Skip things that are not comments, which shouldn't happen
-		if (!Constants.COMMENT_KIND.equals(commentThingListing.getKind())) {
-			if (Constants.LOGGING) Log.e(TAG, "comment whose kind is \""+commentThingListing.getKind()+"\" (expected "+Constants.COMMENT_KIND+")");
-			return insertedCommentIndex;
-		}
-		
-		// handle the replies
-		Listing repliesListing = ci.getReplies();
-		if (repliesListing == null)
-			return insertedCommentIndex;
-		ListingData repliesListingData = repliesListing.getData();
-		if (repliesListingData == null)
-			return insertedCommentIndex;
-		ThingListing[] replyThingListings = repliesListingData.getChildren();
-		if (replyThingListings == null)
-			return insertedCommentIndex;
-		
-		for (ThingListing replyThingListing : replyThingListings) {
-			insertedCommentIndex = insertNestedComment(replyThingListing, indentLevel + 1, insertedCommentIndex + 1);
-		}
 		return insertedCommentIndex;
 	}
 	
