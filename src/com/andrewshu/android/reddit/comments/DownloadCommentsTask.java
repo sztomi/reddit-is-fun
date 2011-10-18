@@ -383,7 +383,7 @@ public class DownloadCommentsTask extends AsyncTask<Integer, Long, Boolean>
 		toVisit.addFirst(comments);
 		 
 		while (!toVisit.isEmpty()) {
-			ThingListing currentNode = toVisit.getFirst();
+			ThingListing currentNode = toVisit.removeFirst();			
 			
 			if (currentNode.getData() == null)
 				continue;
@@ -402,13 +402,13 @@ public class DownloadCommentsTask extends AsyncTask<Integer, Long, Boolean>
 			if (replyThingListings == null)
 				continue;
 						
-			for (int i = replyThingListings.length - 1; i >= 0; --i) {
+			for (int i = replyThingListings.length - 1, j = 1; i >= 0; --i, ++j) {
 				ThingListing item = replyThingListings[i];
 				// Skip things that are not comments, which shouldn't happen
 				if (!Constants.COMMENT_KIND.equals(item.getKind())) {
 					if (Constants.LOGGING)
 						Log.e(TAG, "comment whose kind is \"" 		+
-									item.getKind() +
+									item.getKind() 					+
 									"\" (expected "					+
 									Constants.COMMENT_KIND+")");
 					continue;
@@ -417,7 +417,10 @@ public class DownloadCommentsTask extends AsyncTask<Integer, Long, Boolean>
 				ThingInfo comment = item.getData();				
 				
 				if (comment != null) {
-					if (Constants.MORE_KIND.equals(item.getKind())) comment.setLoadMoreCommentsPlaceholder(true);
+					if (Constants.MORE_KIND.equals(item.getKind())) 
+						comment.setLoadMoreCommentsPlaceholder(true);
+					
+					comment.setIndent(j);
 				}
 					
 				result.add(comment);				
@@ -437,7 +440,7 @@ public class DownloadCommentsTask extends AsyncTask<Integer, Long, Boolean>
 		Iterator<ThingInfo> iter = commentsList.iterator();
 		while (iter.hasNext()) {
 			ThingInfo ci = iter.next();
-			ci.setIndent(mIndentation + indentLevel);
+			//ci.setIndent(mIndentation + indentLevel);
 
 	    	processCommentSlowSteps(ci);
 	    	
